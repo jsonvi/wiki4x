@@ -1,0 +1,9 @@
+content wiki4x chrome/content/ contentaccessible=yes 
+content wiki4x chrome/content/
+
+overlay chrome://browser/content/browser.xul chrome://wiki4x/content/wiki4x.xul
+
+# This is the default-fall back Locale. If a string is missing from a locale, 
+# it will default to this english locale
+locale	wiki4x	en-US	chrome/locale/en-US/
+
