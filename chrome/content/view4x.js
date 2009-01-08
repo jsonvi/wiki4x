@@ -38,9 +38,7 @@ function View4X()
 		doc.body.appendChild(div);
 
 		src = src.replace(/\<[\/]{0,1}pre\>/g,'');
-		logger.group('parser');
 		creole.parse(div,decodeEntities(src));
-		logger.groupEnd();
 		doc.body.removeChild(doc.body.childNodes[0]);
 	}
 	that.domLoad = function(aEvent)
@@ -49,9 +47,7 @@ function View4X()
 		var wiki4x = new Wiki4X();
 		if(!wiki4x.isProtocolValid())
 			return;
-		logger.group('contenttype check');
 		var contenttype = wiki4x.isContentTypeValid();
-		logger.groupEnd();
 		if(!contenttype)
 			return;
 		if(wiki4x.hasHomePath())
@@ -59,9 +55,7 @@ function View4X()
 			if(!wiki4x.isPageValid())
 			return;
 		}
-		logger.group('wikify');
 		wikify();
-		logger.groupEnd();
 	};
 
 }

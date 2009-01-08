@@ -38,13 +38,10 @@ function Option4X()
 		cssfile = cssfile.replace(/\\/g,'\/');
 		if(top.window.navigator.platform.indexOf("Win") >= 0)
 		{
-			logger.log('win platform');
 			cssfile = cssfile.replace(/\\/g,'\/');
 			if(/^[A-Za-z]:\/.+/.test(cssfile))
 			{
-				logger.log('absolutepath match');	
 				cssfile = 'file:///'+cssfile;
-				logger.log('add file:/// to absolutepath:'+cssfile);
 			}
 		}
 		return cssfile;	
