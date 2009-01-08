@@ -46,8 +46,7 @@ Parse.Simple.Base.prototype = {
         else {
             options = this.options;
         }
- 		var src = data.replace(/\n=/g,'\n\n=');
-        this.root.apply(node, src, options);
+        this.root.apply(node, data, options);
     }
 };
 
@@ -195,9 +194,9 @@ Parse.Simple.Creole = function(options) {
             replaceRegex: /\}\}\}$/, replaceString: '' },
 
         ulist: { tag: 'ul', capture: 0,
-            regex: /(^|\n)([ \t]*\*[^*#].*(\n|$)([ \t]*[^\s*#].*(\n|$))*([ \t]*[*#]{2}.*(\n|$))*)+/ },
+            regex: /(^|\n)([ \t]*\*[^*#].*(\n|$)([ \t]*[^\s*#=].*(\n|$))*([ \t]*[*#]{2}.*(\n|$))*)+/ },
         olist: { tag: 'ol', capture: 0,
-            regex: /(^|\n)([ \t]*#[^*#].*(\n|$)([ \t]*[^\s*#].*(\n|$))*([ \t]*[*#]{2}.*(\n|$))*)+/ },
+            regex: /(^|\n)([ \t]*#[^*#].*(\n|$)([ \t]*[^\s*#=].*(\n|$))*([ \t]*[*#]{2}.*(\n|$))*)+/ },
         li: { tag: 'li', capture: 0,
             regex: /[ \t]*([*#]).+(\n[ \t]*[^*#\s].*)*(\n[ \t]*\1[*#].+)*/,
             replaceRegex: /(^|\n)[ \t]*[*#]/g, replaceString: '$1' },
