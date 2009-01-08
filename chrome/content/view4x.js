@@ -32,18 +32,16 @@ function View4X()
 	function wikify()
 	{
 		var src = doc.body.innerHTML;		
-		doc.body.innerHTML = '';
 		initStyle();
-		doc.body.style.display = 'none';
 		var div = doc.createElement('div');
 		div.id = 'wiki-block';	
 		doc.body.appendChild(div);
 
 		src = src.replace(/\<[\/]{0,1}pre\>/g,'');
+		logger.group('parser');
 		creole.parse(div,decodeEntities(src));
+		logger.groupEnd();
 		doc.body.removeChild(doc.body.childNodes[0]);
-
-		doc.body.style.display = '';
 	}
 	that.domLoad = function(aEvent)
 	{
@@ -51,14 +49,19 @@ function View4X()
 		var wiki4x = new Wiki4X();
 		if(!wiki4x.isProtocolValid())
 			return;
-		if(!wiki4x.isContentTypeValid())
+		logger.group('contenttype check');
+		var contenttype = wiki4x.isContentTypeValid();
+		logger.groupEnd();
+		if(!contenttype)
 			return;
 		if(wiki4x.hasHomePath())
 		{
 			if(!wiki4x.isPageValid())
 			return;
 		}
+		logger.group('wikify');
 		wikify();
+		logger.groupEnd();
 	};
 
 }
