@@ -10,8 +10,8 @@
 		xmlns:html="http://www.w3.org/1999/xhtml"
 		buttons="cancel,accept"
 		persist="screenX screenY"
-		onload="Options.initOptionPanel();window.sizeToContent();"
-		ondialogaccept="Options.saveOptions();window.close();"
+		onload="initOptionPanel();window.sizeToContent();"
+		ondialogaccept="saveOptions();window.close();"
     ondialogcancel="window.close();"
     windowtype="wiki4x:settings"
     >

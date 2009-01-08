@@ -1,3 +1,5 @@
+resource wiki4x resource/
+
 content wiki4x chrome/content/ contentaccessible=yes 
 content wiki4x chrome/content/
 

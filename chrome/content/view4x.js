@@ -16,10 +16,17 @@ function View4X()
 
 	function initStyle()
 	{
-		var cssfile = Options.css();
-		logger.log('init style:'+cssfile);
+		var cssfile = Options.getCss();
 		if(cssfile == '')
 			return;
+		if(top.window.navigator.platform.indexOf("Win") >= 0)
+		{
+			cssfile = cssfile.replace(/\\/g,'\/');
+			if(/^[A-Za-z]:\/.+/.test(cssfile))
+			{
+				cssfile = 'file:///'+cssfile;
+			}
+		}
 		var wiki4x = new Wiki4X();
 		var headID = doc.getElementsByTagName("head")[0];         
 		var cssNode = doc.createElement('link');

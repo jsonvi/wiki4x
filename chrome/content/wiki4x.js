@@ -24,7 +24,7 @@ function Wiki4X()
 		return true;
 	};
 	that.hasHomePath = function(){
-		return (Options.path() != '');
+		return (Options.getPath() != '');
 	};
 	that.isPageValid = function(){
 		var src = doc.body.innerHTML;	
