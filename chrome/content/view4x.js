@@ -16,8 +16,8 @@ function View4X()
 
 	function initStyle()
 	{
-		var opt = new Option4X();
-		var cssfile = opt.css();
+		var cssfile = Options.css();
+		logger.log('init style:'+cssfile);
 		if(cssfile == '')
 			return;
 		var wiki4x = new Wiki4X();

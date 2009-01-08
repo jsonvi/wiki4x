@@ -10,13 +10,14 @@
 		xmlns:html="http://www.w3.org/1999/xhtml"
 		buttons="cancel,accept"
 		persist="screenX screenY"
-		onload="new Option4X().initOptionPanel();window.sizeToContent();"
-		ondialogaccept="new Option4X().saveOptions();window.close();"
+		onload="Options.initOptionPanel();window.sizeToContent();"
+		ondialogaccept="Options.saveOptions();window.close();"
     ondialogcancel="window.close();"
     windowtype="wiki4x:settings"
     >
 
 <script type="application/x-javascript" src="chrome://wiki4x/content/options.js"/> 
+<script type="application/x-javascript" src="chrome://wiki4x/content/logger.js"/> 
 <vbox id="optionsBox" flex="1">
 			<vbox>
 			<groupbox id="aboutpanel" orient="vertical" flex="1">

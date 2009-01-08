@@ -2,12 +2,7 @@
 function Wiki4X()
 {
 	var that = this;
-	var home_path = '';
-	function init()
-	{
-		var opt = new Option4X();
-		home_path = opt.path();
-	}
+	
 	function validatePath(_path)
 	{
 		var test_path = _path;
@@ -29,7 +24,7 @@ function Wiki4X()
 		return true;
 	};
 	that.hasHomePath = function(){
-		return (home_path != '');
+		return (Options.path() != '');
 	};
 	that.isPageValid = function(){
 		var src = doc.body.innerHTML;	
@@ -49,7 +44,6 @@ function Wiki4X()
 		else
 			return true;
 	};
-	init();
 }
 
 
