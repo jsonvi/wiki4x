@@ -1,6 +1,6 @@
 /* See license.txt for terms of usage */
-function View4X()
-{
+var View4X = function(){
+	//private
 	var cur_tab;
 	var that = this;
 	var creole = new Parse.Simple.Creole( {
@@ -10,12 +10,11 @@ function View4X()
         },
         linkFormat:['','']
    	} );
-	function decodeEntities(str) {
+	var decodeEntities = function(str) {
 		return str.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
-	}
+	};
 
-	function initStyle()
-	{
+	var initStyle = function(){
 		var cssfile = Options.getCss();
 		if(cssfile == '')
 			return;
@@ -27,7 +26,6 @@ function View4X()
 				cssfile = 'file:///'+cssfile;
 			}
 		}
-		var wiki4x = new Wiki4X();
 		var headID = doc.getElementsByTagName("head")[0];         
 		var cssNode = doc.createElement('link');
 		cssNode.type = 'text/css';
@@ -35,9 +33,8 @@ function View4X()
 		cssNode.href = cssfile;
 		cssNode.media = 'screen';
 		headID.appendChild(cssNode);
-	}
-	function wikify()
-	{
+	};
+	var wikify = function(){
 		var src = doc.body.innerHTML;		
 		initStyle();
 		var div = doc.createElement('div');
@@ -47,24 +44,15 @@ function View4X()
 		src = src.replace(/\<[\/]{0,1}pre\>/g,'');
 		creole.parse(div,decodeEntities(src));
 		doc.body.removeChild(doc.body.childNodes[0]);
-	}
-	that.domLoad = function(aEvent)
-	{
-		doc = aEvent.originalTarget;
-		var wiki4x = new Wiki4X();
-		if(!wiki4x.isProtocolValid())
-			return;
-		var contenttype = wiki4x.isContentTypeValid();
-		if(!contenttype)
-			return;
-		if(wiki4x.hasHomePath())
-		{
-			if(!wiki4x.isPageValid())
-			return;
-		}
-		wikify();
 	};
-
-}
+	//public
+	return {
+		domLoad: function(aEvent){
+			doc = aEvent.originalTarget;
+			if(Wiki4X.isValid())
+				wikify();			 
+		}	
+	};
+}();
 var doc;
-document.addEventListener('DOMContentLoaded',new View4X().domLoad,false);
+document.addEventListener('DOMContentLoaded',View4X.domLoad,false);
