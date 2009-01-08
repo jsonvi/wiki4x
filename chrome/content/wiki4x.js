@@ -1,32 +1,29 @@
 /* See license.txt for terms of usage */
-function Wiki4X()
-{
-	var that = this;
-	
-	function validatePath(_path)
-	{
+var Wiki4X = function(){
+	//private	
+	var validatePath = function(_path){
 		var test_path = _path;
 		test_path = test_path.replace(/file:\/\/\//g,'');
 		test_path = test_path.replace(/\/+/g,'\/');
 		test_path = test_path.replace(/^[\/](.+)/,'$1');
 		return test_path;
-	}
-	that.isProtocolValid = function(){
+	};
+	var isProtocolValid = function(){
 		var protocol = doc.location.protocol;
 		if(protocol != 'file:')
 			return false;
 		return true;
 	};
-	that.isContentTypeValid = function(){
+	var isContentTypeValid = function(){
 		var type = doc.contentType;
 		if(type!='text/plain')
 			return false;
 		return true;
 	};
-	that.hasHomePath = function(){
+	var hasHomePath = function(){
 		return (Options.getPath() != '');
 	};
-	that.isPageValid = function(){
+	var isPageValid = function(){
 		var src = doc.body.innerHTML;	
 		var opt_path = home_path;	
 		if(!src)
@@ -44,7 +41,22 @@ function Wiki4X()
 		else
 			return true;
 	};
-}
+	//public
+	return{
+		isValid: function(){
+			if(!isProtocolValid())
+				return false;
+			if(!isContentTypeValid())
+				return false;
+			if(hasHomePath())
+			{
+				if(!isPageValid())
+					return false;
+			}
+			return true;
+		}	
+	};
+}();
 
 
 
