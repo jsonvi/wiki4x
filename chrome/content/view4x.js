@@ -45,7 +45,7 @@ var View4X = function(){
 		src = src.replace(/\<[\/]{0,1}pre\>/g,'');
 		creole.parse(div,decodeEntities(src));
 		// get title from top heading
-		var title = doc.body.childNodes[1].getElementsByTagName("h1")[0]).innerHTML;
+		var title = doc.body.childNodes[1].getElementsByTagName("h1")[0].innerHTML;
 		doc.body.childNodes[1].setAttribute('name',title);
 		top.window.title = title;
 		doc.body.removeChild(doc.body.childNodes[0]);
