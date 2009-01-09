@@ -34,6 +34,15 @@ var View4X = function(){
 		cssNode.media = 'screen';
 		headID.appendChild(cssNode);
 	};
+	var initTitle = function(){
+		logger.log('inititle');
+		var title = doc.body.childNodes[1].childNodes[0].innerHTML;
+		if(!title)
+			return;
+		logger.log('title is '+title);
+		doc.body.childNodes[1].setAttribute('name',title);
+		top.window.title = title;
+	};
 	var wikify = function(){
 		var src = doc.body.innerHTML;		
 		initStyle();
@@ -44,10 +53,7 @@ var View4X = function(){
 
 		src = src.replace(/\<[\/]{0,1}pre\>/g,'');
 		creole.parse(div,decodeEntities(src));
-		// get title from top heading
-		var title = doc.body.childNodes[1].getElementsByTagName("h1")[0].innerHTML;
-		doc.body.childNodes[1].setAttribute('name',title);
-		top.window.title = title;
+		initTitle();
 		doc.body.removeChild(doc.body.childNodes[0]);
 	};
 	//public
