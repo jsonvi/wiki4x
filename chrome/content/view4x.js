@@ -38,11 +38,16 @@ var View4X = function(){
 		var src = doc.body.innerHTML;		
 		initStyle();
 		var div = doc.createElement('div');
-		div.id = 'wiki-block';	
+		div.setAttribute('class','wiki-block');
+		div.className = 'wiki-block';//for IE	
 		doc.body.appendChild(div);
 
 		src = src.replace(/\<[\/]{0,1}pre\>/g,'');
 		creole.parse(div,decodeEntities(src));
+		// get title from top heading
+		var title = doc.body.childNodes[1].getElementsByTagName("h1")[0]).innerHTML;
+		doc.body.childNodes[1].setAttribute('name',title);
+		top.window.title = title;
 		doc.body.removeChild(doc.body.childNodes[0]);
 	};
 	//public
