@@ -28,9 +28,15 @@ var Wiki4X = function(){
 			return false;
 	
 		var cur_path = doc.location.href; 
-		if(top.window.navigator.platform.indexOf("Win") >= 0)
+        var platform = top.window.navigator.platform.toLowerCase();
+		if(platform.indexOf('win') != -1)
 		{
 			opt_path = opt_path.replace(/\\/g,'\/').toLowerCase();
+			cur_path = cur_path.toLowerCase();
+		}
+       	else if (platform.indexOf('mac') != -1)
+		{
+			opt_path = opt_path.toLowerCase();
 			cur_path = cur_path.toLowerCase();
 		}
 
