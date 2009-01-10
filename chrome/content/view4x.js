@@ -41,17 +41,16 @@ var View4X = function(){
 			return;
 		logger.log('title is '+title);
 		doc.body.childNodes[1].setAttribute('name',title);
-		top.window.title = title;
+		doc.title = title;
 	};
 	var wikify = function(){
-		var src = doc.body.innerHTML;		
+		var src = doc.body.childNodes[0].innerHTML;		
 		initStyle();
 		var div = doc.createElement('div');
 		div.setAttribute('class','wiki-block');
 		div.className = 'wiki-block';//for IE	
 		doc.body.appendChild(div);
 
-		src = src.replace(/\<[\/]{0,1}pre\>/g,'');
 		creole.parse(div,decodeEntities(src));
 		initTitle();
 		doc.body.removeChild(doc.body.childNodes[0]);
