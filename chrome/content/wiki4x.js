@@ -3,9 +3,7 @@ var Wiki4X = function(){
 	//private	
 	var validatePath = function(_path){
 		var test_path = _path;
-		test_path = test_path.replace(/file:\/\/\//g,'');
-		test_path = test_path.replace(/\/+/g,'\/');
-		test_path = test_path.replace(/^[\/](.+)/,'$1');
+		test_path = test_path.replace(/^[file:|\/]+/g,'');
 		return test_path;
 	};
 	var isProtocolValid = function(){
@@ -25,7 +23,7 @@ var Wiki4X = function(){
 	};
 	var isPageValid = function(){
 		var src = doc.body.innerHTML;	
-		var opt_path = home_path;	
+		var opt_path = Options.getPath();	
 		if(!src)
 			return false;
 	
@@ -36,6 +34,7 @@ var Wiki4X = function(){
 		cur_path = validatePath(cur_path);
 		opt_path = validatePath(opt_path);
 		cur_path = cur_path.substring(0,opt_path.length);
+		logger.log('cur_path'+cur_path+'\nopt_path'+opt_path);
 		if(cur_path != opt_path)
 			return false;
 		else
