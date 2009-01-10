@@ -194,9 +194,9 @@ Parse.Simple.Creole = function(options) {
             replaceRegex: /\}\}\}$/, replaceString: '' },
 
         ulist: { tag: 'ul', capture: 0,
-            regex: /(^|\n)([ \t]*\*[^*#].*(\n|$)([ \t]*[^\s*#=\|\{{3}].*(\n|$))*([ \t]*[*#]{2}.*(\n|$))*)+/ },
+            regex: /(^|\n)([ \t]*\*[^*#].*(\n|$)([ \t]*[^\s*#=\|\{].*(\n|$))*([ \t]*[*#]{2}.*(\n|$))*)+/ },
         olist: { tag: 'ol', capture: 0,
-            regex: /(^|\n)([ \t]*#[^*#].*(\n|$)([ \t]*[^\s*#=\|\{{3}].*(\n|$))*([ \t]*[*#]{2}.*(\n|$))*)+/ },
+            regex: /(^|\n)([ \t]*#[^*#].*(\n|$)([ \t]*[^\s*#=\|\{].*(\n|$))*([ \t]*[*#]{2}.*(\n|$))*)+/ },
         li: { tag: 'li', capture: 0,
             regex: /[ \t]*([*#]).+(\n[ \t]*[^*#\s].*)*(\n[ \t]*\1[*#].+)*/,
             replaceRegex: /(^|\n)[ \t]*[*#]/g, replaceString: '$1' },
