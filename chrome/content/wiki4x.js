@@ -27,9 +27,12 @@ var Wiki4X = function(){
 		if(!src)
 			return false;
 	
-		if(top.window.navigator.platform.indexOf("Win") >= 0)
-			opt_path = opt_path.replace(/\\/g,'\/');
 		var cur_path = doc.location.href; 
+		if(top.window.navigator.platform.indexOf("Win") >= 0)
+		{
+			opt_path = opt_path.replace(/\\/g,'\/').toLowerCase();
+			cur_path = cur_path.toLowerCase();
+		}
 
 		cur_path = validatePath(cur_path);
 		opt_path = validatePath(opt_path);
