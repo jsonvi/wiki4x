@@ -5,7 +5,7 @@
 
   <Description about="urn:mozilla:install-manifest">
     <em:id>wiki4x@freeai.ghc</em:id>
-    <em:version>0.1.0.20090108</em:version>
+    <em:version>0.1.0.20090110</em:version>
     <em:type>2</em:type>
 	<em:optionsURL>chrome://wiki4x/content/options.xul</em:optionsURL>
     <em:targetApplication>
