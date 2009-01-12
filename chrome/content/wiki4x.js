@@ -43,7 +43,6 @@ var Wiki4X = function(){
 		cur_path = validatePath(cur_path);
 		opt_path = validatePath(opt_path);
 		cur_path = cur_path.substring(0,opt_path.length);
-		logger.log('cur_path'+cur_path+'\nopt_path'+opt_path);
 		if(cur_path != opt_path)
 			return false;
 		else

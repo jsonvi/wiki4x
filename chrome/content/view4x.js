@@ -35,11 +35,9 @@ var View4X = function(){
 		headID.appendChild(cssNode);
 	};
 	var initTitle = function(){
-		logger.log('inititle');
 		var title = doc.body.childNodes[1].childNodes[0].innerHTML;
 		if(!title)
 			return;
-		logger.log('title is '+title);
 		doc.body.childNodes[1].setAttribute('name',title);
 		doc.title = title;
 	};
