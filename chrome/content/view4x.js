@@ -3,13 +3,7 @@ var View4X = function(){
 	//private
 	var cur_tab;
 	var that = this;
-	var creole = new Parse.Simple.Creole( {
-        interwiki:{
-            WikiCreole: 'http://www.wikicreole.org/wiki/',
-            Wikipedia: 'http://en.wikipedia.org/wiki/'
-        },
-        linkFormat:['','']
-   	} );
+	
 	var decodeEntities = function(str) {
 		return str.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
 	};
@@ -44,6 +38,13 @@ var View4X = function(){
 	var wikify = function(){
 		var src = doc.body.childNodes[0].innerHTML;		
 		initStyle();
+		var creole = new Parse.Simple.Creole( {
+			interwiki:{
+				WikiCreole: 'http://www.wikicreole.org/wiki/',
+				Wikipedia: 'http://en.wikipedia.org/wiki/'
+			},
+			linkFormat:['',Options.getExt()]
+		} );
 		var div = doc.createElement('div');
 		div.setAttribute('class','wiki-block');
 		div.className = 'wiki-block';//for IE	

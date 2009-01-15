@@ -5,6 +5,7 @@ var Options = function(){
 	var _pref = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
 	var _path = '';
 	var _css = '';
+	var _ext = '';
 	var getStrPref = function(str)
 	{
 		try
@@ -15,14 +16,20 @@ var Options = function(){
 	};
 
 	var loadOptions = function(){
+		_ext = getStrPref("wiki4x.option4x.ext");
 		_path = getStrPref("wiki4x.option4x.path");
 		_css = getStrPref("wiki4x.option4x.css");
 	}();
 
 	// public
 	return {
+		getExt: function(){return _ext;},	
 		getPath: function(){return _path;},	
 		getCss: function(){return _css;},
+		setExt: function(_newext){
+			_pref.setCharPref("wiki4x.option4x.path",_newext);
+			_ext = _newext;						 
+		},
 		setPath: function(_newpath){
 			_pref.setCharPref("wiki4x.option4x.path",_newpath);
 			_path = _newpath;						 

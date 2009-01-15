@@ -18,6 +18,14 @@ var Wiki4X = function(){
 			return false;
 		return true;
 	};
+	var isExtensionValid = function(){
+		var ext = Options.getExt();
+		if(ext=='')
+			return true;
+		var cur_path = doc.location.href; 
+		var cur_ext = cur_path.match(/\.[\w]+$/);
+		return (ext == cur_ext);
+	};
 	var hasHomePath = function(){
 		return (Options.getPath() != '');
 	};
@@ -43,10 +51,7 @@ var Wiki4X = function(){
 		cur_path = validatePath(cur_path);
 		opt_path = validatePath(opt_path);
 		cur_path = cur_path.substring(0,opt_path.length);
-		if(cur_path != opt_path)
-			return false;
-		else
-			return true;
+		return (cur_path == opt_path);
 	};
 	//public
 	return{
@@ -54,6 +59,8 @@ var Wiki4X = function(){
 			if(!isProtocolValid())
 				return false;
 			if(!isContentTypeValid())
+				return false;
+			if(!isExtensionValid())
 				return false;
 			if(hasHomePath())
 			{

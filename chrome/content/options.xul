@@ -27,9 +27,14 @@
 				</vbox>
 				<separator />
 			</groupbox>
-	
-				<separator class="thin" />
+
     		<groupbox orient="vertical">
+				<separator class="thin" />
+			    <hbox align="right">
+					<description value="&wiki4x.option4x.ext;"/>
+				    <textbox id="ext-txt" size="20" />
+		        </hbox>
+				<separator class="thin" />
 		        <hbox align="right">
 					<description value="&wiki4x.option4x.path;"/>
 				    <textbox id="path-txt" size="45" />
