@@ -42,12 +42,11 @@ var Wiki4X = function(){
 			opt_path = opt_path.replace(/\\/g,'\/').toLowerCase();
 			cur_path = cur_path.toLowerCase();
 		}
-       	else if (platform.indexOf('mac') != -1)
+    else if (platform.indexOf('mac') != -1)
 		{
 			opt_path = opt_path.toLowerCase();
 			cur_path = cur_path.toLowerCase();
 		}
-
 		cur_path = validatePath(cur_path);
 		opt_path = validatePath(opt_path);
 		cur_path = cur_path.substring(0,opt_path.length);

@@ -30,19 +30,21 @@
 
     		<groupbox orient="vertical">
 				<separator class="thin" />
-			    <hbox align="right">
-					<description value="&wiki4x.option4x.ext;"/>
-				    <textbox id="ext-txt" size="20" />
-		        </hbox>
-				<separator class="thin" />
 		        <hbox align="right">
-					<description value="&wiki4x.option4x.path;"/>
-				    <textbox id="path-txt" size="45" />
+			    <description value="&wiki4x.option4x.path;"/>
+			    <textbox id="path-txt" size="35" />
+                            <button label="&wiki4x.option4x.browse;" onclick="pickHomePath()"/>
 		        </hbox>
 				<separator class="thin" />
-			    <hbox align="right">
-					<description value="&wiki4x.option4x.css;"/>
-				    <textbox id="css-txt" size="45" />
+                        <hbox align="right">
+                            <description value="&wiki4x.option4x.css;"/>
+                            <textbox id="css-txt" size="35" />
+                            <button label="&wiki4x.option4x.browse;" onclick="pickStyleFile()"/>
+		        </hbox>
+				<separator class="thin" />
+                        <hbox align="right">
+                            <description value="&wiki4x.option4x.ext;" />
+                            <textbox id="ext-txt" size="8" />
 		        </hbox>
 
 			  </groupbox>

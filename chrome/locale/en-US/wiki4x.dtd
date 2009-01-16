@@ -1,8 +1,9 @@
 <!ENTITY version "0.1.0.20090110">
 <!ENTITY wiki4x.option4x.windowtitle "Option">
-<!ENTITY wiki4x.option4x.ext "Wiki Extension">
+<!ENTITY wiki4x.option4x.ext "Extension">
 <!ENTITY wiki4x.option4x.path "Home Path">
 <!ENTITY wiki4x.option4x.css "Style File">
+<!ENTITY wiki4x.option4x.browse "Browse">
 <!ENTITY wiki4x.option4x.about.title "Wiki4X">
 <!ENTITY wiki4x.option4x.about.version "Version &version;">
 
