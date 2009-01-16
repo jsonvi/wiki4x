@@ -18,37 +18,40 @@
 
 <script type="application/x-javascript" src="chrome://wiki4x/content/options.js"/> 
 <script type="application/x-javascript" src="chrome://wiki4x/content/logger.js"/> 
-<vbox id="optionsBox" flex="1">
-			<vbox>
-			<groupbox id="aboutpanel" orient="vertical" flex="1">
-				<vbox align="center">
-				<description value="&wiki4x.option4x.about.title;" class="h2" />
-				<description value="&wiki4x.option4x.about.version;"/>
-				</vbox>
-				<separator />
-			</groupbox>
+<vbox id="optionsBox" >
+  <vbox>
+    <groupbox id="aboutpanel" orient="vertical" >
+      <vbox align="center">
+        <description value="&wiki4x.option4x.about.title;" class="h2" />
+        <description value="&wiki4x.option4x.about.version;"/>
+      </vbox>
+      <separator />
+    </groupbox>
+    <groupbox orient="vertical">
+      <separator class="thin" />
+      <vbox align="left">
+        <description value="&wiki4x.option4x.path;" />
+        <hbox>
+          <textbox id="path-txt" />
+          <button label="&wiki4x.option4x.browse;" onclick="pickHomePath()" />
+        </hbox>
+      </vbox>
+      <separator class="thin" />
+      <vbox align="left">
+        <description value="&wiki4x.option4x.css;" />
+        <hbox>
+          <textbox id="css-txt" />
+          <button label="&wiki4x.option4x.browse;" onclick="pickStyleFile()" />
+        </hbox>
+      </vbox>
+      <separator class="thin" />
+      <vbox align="left">
+        <description value="&wiki4x.option4x.ext;" />
+        <textbox id="ext-txt" size="5" />
+      </vbox>
 
-    		<groupbox orient="vertical">
-				<separator class="thin" />
-		        <hbox align="right">
-			    <description value="&wiki4x.option4x.path;"/>
-			    <textbox id="path-txt" size="35" />
-                            <button label="&wiki4x.option4x.browse;" onclick="pickHomePath()"/>
-		        </hbox>
-				<separator class="thin" />
-                        <hbox align="right">
-                            <description value="&wiki4x.option4x.css;"/>
-                            <textbox id="css-txt" size="35" />
-                            <button label="&wiki4x.option4x.browse;" onclick="pickStyleFile()"/>
-		        </hbox>
-				<separator class="thin" />
-                        <hbox align="right">
-                            <description value="&wiki4x.option4x.ext;" />
-                            <textbox id="ext-txt" size="8" />
-		        </hbox>
-
-			  </groupbox>
-			</vbox>
+</groupbox>
+</vbox>
 
 </vbox>
 
