@@ -27,7 +27,7 @@ var Options = function(){
 		getPath: function(){return _path;},	
 		getCss: function(){return _css;},
 		setExt: function(_newext){
-			_pref.setCharPref("wiki4x.option4x.path",_newext);
+			_pref.setCharPref("wiki4x.option4x.ext",_newext);
 			_ext = _newext;						 
 		},
 		setPath: function(_newpath){
