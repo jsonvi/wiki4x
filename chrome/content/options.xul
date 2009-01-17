@@ -5,13 +5,13 @@
 
 <dialog
 		id="wiki4xoptions"
-		title="&wiki4x.option4x.windowtitle;"
+		title="&wiki4x.options.windowtitle;"
 		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 		xmlns:html="http://www.w3.org/1999/xhtml"
 		buttons="cancel,accept"
 		persist="screenX screenY"
-		onload="initOptionPanel();window.sizeToContent();"
-		ondialogaccept="saveOptions();window.close();"
+		onload="OptGui.init();window.sizeToContent();"
+		ondialogaccept="OptGui.saveOptions();window.close();"
     ondialogcancel="window.close();"
     windowtype="wiki4x:settings"
     >
@@ -22,37 +22,55 @@
   <vbox>
     <groupbox id="aboutpanel" orient="vertical" >
       <vbox align="center">
-        <caption label="&wiki4x.option4x.about.title;" />
-        <description value="&wiki4x.option4x.about.version;"/>
+        <caption label="&wiki4x.options.about.title;" />
+        <description value="&wiki4x.options.about.version;"/>
       </vbox>
       <separator />
     </groupbox>
     <groupbox orient="vertical">
       <separator class="thin" />
       <vbox align="left">
-        <caption label="&wiki4x.option4x.path;" />
+        <caption label="&wiki4x.options.path;" />
         <hbox>
           <textbox id="path-txt" />
-          <button label="&wiki4x.option4x.browse;" onclick="pickHomePath()" />
+          <button label="&wiki4x.options.browse;" onclick="OptGui.pickHomePath()" />
+        </hbox>
+      </vbox>
+      <separator class="thin" />
+      <vbox align="left" flex="1">
+        <caption label="&wiki4x.options.css;" />
+        <hbox flex="1">
+          <textbox id="css-txt" flex="1" />
+          <button label="&wiki4x.options.browse;" onclick="OptGui.pickStyleFile()" />
         </hbox>
       </vbox>
       <separator class="thin" />
       <vbox align="left">
-        <caption label="&wiki4x.option4x.css;" />
-        <hbox>
-          <textbox id="css-txt" />
-          <button label="&wiki4x.option4x.browse;" onclick="pickStyleFile()" />
-        </hbox>
-      </vbox>
-      <separator class="thin" />
-      <vbox align="left">
-        <caption label="&wiki4x.option4x.ext;" />
+        <caption label="&wiki4x.options.ext;" />
         <textbox id="ext-txt" size="5" />
+      </vbox>
+      <separator class="thin" />
+      <vbox align="left">
+        <caption label="&wiki4x.options.interwiki;" />
+        <hbox>
+          <listbox id="inter-wiki-list" flex="1">
+           <listitem label="[[http://en.wikipedia.org/wiki/|Wikipedia]]" />
+          </listbox>
+          <vbox>
+            <button label="&wiki4x.options.add;" onclick="OptGui.addInterWiki()" />
+            <button label="&wiki4x.options.edit;" onclick="OptGui.editInterWiki()" />
+            <button label="&wiki4x.options.remove;" onclick="OptGui.removeInterWiki()" />
+          </vbox>
+        </hbox>
       </vbox>
 
 </groupbox>
 </vbox>
 
 </vbox>
+<stringbundleset id="strbundles">
+<stringbundle id="strings" src="chrome://wiki4x/locale/wiki4x.properties"/>
+</stringbundleset>
 
 </dialog>
+
