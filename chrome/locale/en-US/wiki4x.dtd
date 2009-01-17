@@ -5,6 +5,8 @@
 <!ENTITY wiki4x.options.css "Style File">
 <!ENTITY wiki4x.options.browse "Browse">
 <!ENTITY wiki4x.options.interwiki "InterWiki">
+<!ENTITY wiki4x.options.name "Name">
+<!ENTITY wiki4x.options.url "URL">
 <!ENTITY wiki4x.options.add "Add">
 <!ENTITY wiki4x.options.remove "Remove">
 <!ENTITY wiki4x.options.edit "Edit">
