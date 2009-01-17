@@ -22,7 +22,7 @@
   <vbox>
     <groupbox id="aboutpanel" orient="vertical" >
       <vbox align="center">
-        <description value="&wiki4x.option4x.about.title;" class="h2" />
+        <caption label="&wiki4x.option4x.about.title;" />
         <description value="&wiki4x.option4x.about.version;"/>
       </vbox>
       <separator />
@@ -30,7 +30,7 @@
     <groupbox orient="vertical">
       <separator class="thin" />
       <vbox align="left">
-        <description value="&wiki4x.option4x.path;" />
+        <caption label="&wiki4x.option4x.path;" />
         <hbox>
           <textbox id="path-txt" />
           <button label="&wiki4x.option4x.browse;" onclick="pickHomePath()" />
@@ -38,7 +38,7 @@
       </vbox>
       <separator class="thin" />
       <vbox align="left">
-        <description value="&wiki4x.option4x.css;" />
+        <caption label="&wiki4x.option4x.css;" />
         <hbox>
           <textbox id="css-txt" />
           <button label="&wiki4x.option4x.browse;" onclick="pickStyleFile()" />
@@ -46,7 +46,7 @@
       </vbox>
       <separator class="thin" />
       <vbox align="left">
-        <description value="&wiki4x.option4x.ext;" />
+        <caption label="&wiki4x.option4x.ext;" />
         <textbox id="ext-txt" size="5" />
       </vbox>
 
