@@ -54,7 +54,14 @@
         <caption label="&wiki4x.options.interwiki;" />
         <hbox>
           <listbox id="inter-wiki-list" flex="1">
-           <listitem label="[[http://en.wikipedia.org/wiki/|Wikipedia]]" />
+            <listhead>
+              <listheader label="&wiki4x.options.name;"/>
+              <listheader label="&wiki4x.options.url;"/>
+            </listhead>
+            <listcols>
+              <listcol/>
+              <listcol flex="1"/>
+            </listcols>
           </listbox>
           <vbox>
             <button label="&wiki4x.options.add;" onclick="OptGui.addInterWiki()" />
