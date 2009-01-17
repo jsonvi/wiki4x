@@ -40,17 +40,38 @@ var OptGui = function(){
         return false;
       return input.value; 
   };
+  var showInterWikiDialog = function(_name,_url){
+  
+    var params = {name:_name,url:_url,newName:null,newUrl:null};       
+    window.openDialog("chrome://wiki4x/content/interwiki.xul", "",
+      "chrome, dialog, modal, resizable=yes", params).focus();
+    return params;
+  };
+  var isValidInterWiki = function(_str){
+      return /^[^\|\,]+\|[^\|\,]+$/.test(_str); 
+  };
+  var existedInterWikiName = function(_name){
+      for(var i=0;i<interWikiList.getRowCount();i++)
+      {
+         if(interWikiList.getItemAtIndex(i).childNodes[0].getAttribute('label') == _name)
+           return true;
+      }
+      return false;
+  };
   var getNewItem = function(){
-       var result = newPrompt(strbundle.getString("addInterWikiTitle"),
-                               strbundle.getString("addInterWikiDescription"),
-                               '');
-        if(!result)
+        var result = showInterWikiDialog('','');
+
+        if((!result.newName) || (!result.newUrl))
           return false;
-        for(var i=0;i<interWikiList.getRowCount();i++)
+        if(existedInterWikiName(result.newName))
+          return false;
+       /*
+        if(!isValidInterWiki(result.newName))
         {
-           if(interWikiList.getItemAtIndex(i).label == result)
-             return false;
+          alert(strbundle.getString("invalidInterWikiAlert"));
+          return false;
         }
+        */
         return result;
   };
   //public
@@ -83,18 +104,37 @@ var OptGui = function(){
     },
     addInterWiki: function(){
         var result = getNewItem();
-         if(result!=false)
-           interWikiList.appendItem(result,"");
+        if(result!=false)
+        {
+           var row = document.createElement('listitem');
+           var nameCell = document.createElement('listcell');
+           nameCell.setAttribute("label", result.newName);   
+           var urlCell = document.createElement('listcell');
+           urlCell.setAttribute("label", result.newUrl);   
+           row.appendChild(nameCell);
+           row.appendChild(urlCell);
+           interWikiList.appendChild(row);
+        }
     },
     editInterWiki: function(){
         var index = interWikiList.selectedIndex;
         if(index == -1)
           return;
-        var oldLabel = interWikiList.getItemAtIndex(index).label;
-        var result = newPrompt('edit','edit',oldLabel);
-        if(!result)
-          return;
-        interWikiList.getItemAtIndex(index).label = result;
+        var item = interWikiList.getItemAtIndex(index);
+        var name = item.childNodes[0];
+        var url = item.childNodes[1];
+        logger.log('name'+name);
+        logger.log('name label'+name.getAttribute('label'));
+        var result = showInterWikiDialog(name.getAttribute('label'),url.getAttribute('label'));
+
+        if(result.newName && result.newUrl)
+        {
+          if(existedInterWikiName(result.newName))
+            return false;
+          var item = interWikiList.getItemAtIndex(index);
+          name.setAttribute('label',result.newName);
+          url.setAttribute('label',result.newUrl);
+        }
     },
     removeInterWiki: function(){
         var index = interWikiList.selectedIndex;
