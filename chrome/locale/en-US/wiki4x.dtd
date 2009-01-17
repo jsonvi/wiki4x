@@ -1,9 +1,13 @@
 <!ENTITY version "0.1.0.20090110">
-<!ENTITY wiki4x.option4x.windowtitle "Option">
-<!ENTITY wiki4x.option4x.ext "Extension">
-<!ENTITY wiki4x.option4x.path "Home Path">
-<!ENTITY wiki4x.option4x.css "Style File">
-<!ENTITY wiki4x.option4x.browse "Browse">
-<!ENTITY wiki4x.option4x.about.title "Wiki4X">
-<!ENTITY wiki4x.option4x.about.version "Version &version;">
+<!ENTITY wiki4x.options.windowtitle "Option">
+<!ENTITY wiki4x.options.ext "Extension">
+<!ENTITY wiki4x.options.path "Home Path">
+<!ENTITY wiki4x.options.css "Style File">
+<!ENTITY wiki4x.options.browse "Browse">
+<!ENTITY wiki4x.options.interwiki "InterWiki">
+<!ENTITY wiki4x.options.add "Add">
+<!ENTITY wiki4x.options.remove "Remove">
+<!ENTITY wiki4x.options.edit "Edit">
+<!ENTITY wiki4x.options.about.title "Wiki4X">
+<!ENTITY wiki4x.options.about.version "Version &version;">
 
