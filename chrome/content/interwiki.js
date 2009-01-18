@@ -1,0 +1,4 @@
+var InterWiki = function(){
+
+
+};
