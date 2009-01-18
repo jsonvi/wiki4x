@@ -1,3 +1,4 @@
+/* See license.txt for terms of usage */
 function onLoad() {
   document.getElementById("inter-wiki-name-txt").value = window.arguments[0].name;
   document.getElementById("inter-wiki-url-txt").value = window.arguments[0].url;
