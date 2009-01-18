@@ -16,8 +16,10 @@
     windowtype="wiki4x:settings"
     >
 
+<script type="application/x-javascript" src="chrome://wiki4x/content/common.js"/> 
 <script type="application/x-javascript" src="chrome://wiki4x/content/options.js"/> 
 <script type="application/x-javascript" src="chrome://wiki4x/content/logger.js"/> 
+<script type="application/x-javascript" src="chrome://wiki4x/content/interwiki.js"/> 
 <vbox id="optionsBox" >
   <vbox>
     <groupbox id="aboutpanel" orient="vertical" >
