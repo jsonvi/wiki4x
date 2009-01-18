@@ -3,7 +3,7 @@
 <!DOCTYPE dialog SYSTEM "chrome://wiki4x/locale/wiki4x.dtd">
 
 <dialog
-		id="interwiki"
+		id="inter-wiki-dialog"
 		title="&wiki4x.options.windowtitle;"
 		xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
 		xmlns:html="http://www.w3.org/1999/xhtml"
@@ -15,7 +15,7 @@
     windowtype="wiki4x:settings"
     >
 
-<script type="application/x-javascript" src="chrome://wiki4x/content/interwiki.js"/> 
+<script type="application/x-javascript" src="chrome://wiki4x/content/interwikidialog.js"/> 
 
 <vbox id="interwikiBox" >
   <vbox>
