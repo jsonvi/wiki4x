@@ -29,17 +29,6 @@ var OptGui = function(){
       document.getElementById('css-txt').value = newcss;
   };
 
-  var newPrompt = function(_title,_string,_input){
-      var check = {};                 
-      var input = {value: _input};                  
-      var prompts = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
-                              .getService(Components.interfaces.nsIPromptService);
-
-      var result = prompts.prompt(null,_title,_string, input, null,check);
-      if(!result)
-        return false;
-      return input.value; 
-  };
   var showInterWikiDialog = function(_name,_url){
   
     var params = {name:_name,url:_url,newName:null,newUrl:null};       
