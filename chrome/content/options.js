@@ -1,9 +1,4 @@
 /* See license.txt for terms of usage */
-/*
- * todo:
- *      1. init Listbox using InterWiki object
- *
- */
 Components.utils.import('resource://wiki4x/modules/options.js');
 
 var OptGui = function(){
@@ -52,8 +47,10 @@ var OptGui = function(){
     interWikiList.appendChild(row);
   };
   var addNewInterWiki = function(_name,_url){
-    if(InterWiki.add(_name,_url))
+    if(Options.interWiki().add(_name,_url))
        addRow(_name,_url);
+    else
+      logger.log('add new failed');
   };
   var getSelectedInterWiki = function(){
       var index = interWikiList.selectedIndex;
@@ -81,6 +78,11 @@ var OptGui = function(){
         }
       };
   };
+  var initListItems = function(){
+    var wiki = Options.interWiki().getAll(); 
+    for(name in wiki)
+      addRow(name,wiki[name]);
+  };
   //public
   return {
     init:function(){
@@ -88,6 +90,7 @@ var OptGui = function(){
       pathTxt = document.getElementById('path-txt');
       cssTxt = document.getElementById('css-txt');
       interWikiList = document.getElementById('inter-wiki-list');
+      initListItems();
       strbundle = document.getElementById("strings");
       extTxt.value = Options.getExt();
       pathTxt.value = Options.getPath();
@@ -98,6 +101,7 @@ var OptGui = function(){
       Options.setPath(pathTxt.value);
       Options.setCss(cssTxt.value);
       Options.setExt(extTxt.value);
+      Options.saveInterWiki();
     },
     pickHomePath: function(){
       var newpath = getHomePath();
@@ -124,13 +128,13 @@ var OptGui = function(){
         logger.log('startedit');
         if(result.newName != wiki.wikiName())
         {
-          InterWiki.remove(wiki.wikiName());
+          Options.interWiki().remove(wiki.wikiName());
           addNewInterWiki(result.newName,result.newUrl);
           wiki.remove();
         }
         else
         {
-          InterWiki.update(result.newName,result.newUrl);
+          Options.interWiki().update(result.newName,result.newUrl);
           wiki.wikiUrl(result.newUrl);
         }
     },
@@ -138,7 +142,7 @@ var OptGui = function(){
         var wiki = getSelectedInterWiki();
         if(wiki==false)
           return;                       
-        InterWiki.remove(wiki.wikiName());
+        Options.interWiki().remove(wiki.wikiName());
         wiki.remove();
     }
   };

@@ -39,10 +39,7 @@ var View4X = function(){
 		var src = doc.body.childNodes[0].innerHTML;		
 		initStyle();
 		var creole = new Parse.Simple.Creole( {
-			interwiki:{
-				WikiCreole: 'http://www.wikicreole.org/wiki/',
-				Wikipedia: 'http://en.wikipedia.org/wiki/'
-			},
+			interwiki: Options.interWiki().getAll(),
 			linkFormat:['',Options.getExt()]
 		} );
 		var div = doc.createElement('div');
