@@ -25,9 +25,11 @@ var InterWiki = function(){
     },
     rename: function(_name,_newname){
       if(!interwiki[_name])
-        return;
-      add(_newname,interwiki[_name]);
+        return false;
+      if(!this.add(_newname,interwiki[_name]))
+        return false;
       delete interwiki[_name];
+      return true;
     },
     update: function(_name,_newurl){
       if(!interwiki[_name])
@@ -35,6 +37,11 @@ var InterWiki = function(){
       interwiki[_name]=_newurl;
     },
     init: function(_str){
+      if(!_str)
+      {
+        dump('first use, or no interwiki option value'); 
+        _str = '';
+      }
       var wikis = _str.split('\n\n');
       for(var i=0;i<wikis.length;i++)
       {

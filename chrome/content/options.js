@@ -129,8 +129,8 @@ var OptGui = function(){
 
         if(result.newName != wiki.wikiName())
         {
-          Options.interWiki().rename(wiki.wikiName(),result.newName);
-          wiki.wikiName(result.newName);
+          if(Options.interWiki().rename(wiki.wikiName(),result.newName))
+            wiki.wikiName(result.newName);
         }
 
         Options.interWiki().update(result.newName,result.newUrl);
