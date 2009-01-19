@@ -23,7 +23,7 @@ var Wiki4X = function(){
 		if(ext=='')
 			return true;
 		var cur_path = doc.location.href; 
-		var cur_ext = cur_path.match(/\.[\w]+$/);
+		var cur_ext = cur_path.match(/\.[^\.]+$/);
 		return (ext == cur_ext);
 	};
 	var hasHomePath = function(){
