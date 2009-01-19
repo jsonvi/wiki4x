@@ -23,10 +23,16 @@ var InterWiki = function(){
     get: function(_name){
       return interwiki[_name];         
     },
+    rename: function(_name,_newname){
+      if(!interwiki[_name])
+        return;
+      add(_newname,interwiki[_name]);
+      delete interwiki[_name];
+    },
     update: function(_name,_newurl){
       if(!interwiki[_name])
         return;
-        interwiki[_name]=_newurl;
+      interwiki[_name]=_newurl;
     },
     init: function(_str){
       var wikis = _str.split('\n\n');

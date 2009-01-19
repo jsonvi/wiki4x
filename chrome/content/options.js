@@ -126,17 +126,15 @@ var OptGui = function(){
         if((!result.newName) || (!result.newUrl))
           return false;
         logger.log('startedit');
+
         if(result.newName != wiki.wikiName())
         {
-          Options.interWiki().remove(wiki.wikiName());
-          addNewInterWiki(result.newName,result.newUrl);
-          wiki.remove();
+          Options.interWiki().rename(wiki.wikiName(),result.newName);
+          wiki.wikiName(result.newName);
         }
-        else
-        {
-          Options.interWiki().update(result.newName,result.newUrl);
-          wiki.wikiUrl(result.newUrl);
-        }
+
+        Options.interWiki().update(result.newName,result.newUrl);
+        wiki.wikiUrl(result.newUrl);
     },
     removeInterWiki: function(){
         var wiki = getSelectedInterWiki();
