@@ -49,7 +49,10 @@ var Wiki4X = function(){
 		}
 		cur_path = validatePath(cur_path);
 		opt_path = validatePath(opt_path);
+    cur_path = decodeURIComponent(cur_path);
 		cur_path = cur_path.substring(0,opt_path.length);
+    logger.log('cur_path '+cur_path);
+    logger.log('opt_path '+opt_path);
 		return (cur_path == opt_path);
 	};
 	//public
