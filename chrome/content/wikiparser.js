@@ -192,12 +192,24 @@ Parse.Simple.Creole = function(options) {
         hr: { tag: 'hr', regex: /(^|\n)\s*----\s*(\n|$)/ },
 
         br: { tag: 'br', regex: /\\\\/ },
-		insurePre: {
-			regex:/([^\n])(\n\{\{\{\n((.*\n)*?)\}\}\}(\n|$))/g,
-			replace: function(str,p1,p2){
-				return p1+'\n'+p2;
-			}
-		},
+        insurePre: {
+          regex:/([^\n])(\n\{\{\{\n((.*\n)*?)\}\}\}(\n|$))/g,
+          replace: function(str,p1,p2){
+            return p1+'\n'+p2;
+          }
+        },
+        insureTable: {
+          regex:/(^|\n)((\|.*?[ \t]*([^\n])+(\n|$))+)/g,
+          replace: function(str,p1,p2){
+            return p1+'\n'+p2;
+          }
+        },
+        insureHead: {
+          regex:/(^|\n)([ \t]*={1,6}[ \t]([^~]*?(~(.|(?=\n)|$))*)[ \t]*=*\s*(\n|$))/g,
+          replace: function(str,p1,p2){
+            return p1+'\n'+p2;
+          }
+        },
         preBlock: { tag: 'pre', capture: 2,
             regex: /(^|\n)\{\{\{\n((.*\n)*?)\}\}\}(\n|$)/,
             replaceRegex: /^ ([ \t]*\}\}\})/gm,
@@ -207,9 +219,9 @@ Parse.Simple.Creole = function(options) {
             replaceRegex: /\}\}\}$/, replaceString: '' },
 
         ulist: { tag: 'ul', capture: 0,
-            regex: /(^|\n)([ \t]*\*[^*#].*(\n|$)([ \t]*[^\s*#=\|].*(\n|$))*([ \t]*[*#]{2}.*(\n|$))*)+/ },
+            regex: /(^|\n)([ \t]*\*[^*#].*(\n|$)([ \t]*[^\s*#].*(\n|$))*([ \t]*[*#]{2}.*(\n|$))*)+/ },
         olist: { tag: 'ol', capture: 0,
-            regex: /(^|\n)([ \t]*#[^*#].*(\n|$)([ \t]*[^\s*#=\|].*(\n|$))*([ \t]*[*#]{2}.*(\n|$))*)+/ },
+            regex: /(^|\n)([ \t]*#[^*#].*(\n|$)([ \t]*[^\s*#].*(\n|$))*([ \t]*[*#]{2}.*(\n|$))*)+/ },
         li: { tag: 'li', capture: 0,
             regex: /[ \t]*([*#]).+(\n[ \t]*[^*#\s].*)*(\n[ \t]*\1[*#].+)*/,
             replaceRegex: /(^|\n)[ \t]*[*#]/g, replaceString: '$1' },
@@ -348,7 +360,7 @@ Parse.Simple.Creole = function(options) {
             g.tt, g.img ];
 
     g.root = {
-		prepare : [ g.insurePre ],
+		prepare : [ g.insurePre, g.insureTable, g.insureHead ],
         children: [ g.h1, g.h2, g.h3, g.h4, g.h5, g.h6,
             g.hr, g.ulist, g.olist, g.preBlock, g.table ],
         fallback: { children: [ g.paragraph ] }
