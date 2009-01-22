@@ -83,9 +83,15 @@ var OptGui = function(){
     for(name in wiki)
       addRow(name,wiki[name]);
   };
+  var initVersion = function(){
+    var ver = Options.getVersion(); 
+    if(ver)
+      document.getElementById('wiki4x-version').value = ver;
+  };
   //public
   return {
     init:function(){
+      initVersion();
       extTxt = document.getElementById('ext-txt');
       pathTxt = document.getElementById('path-txt');
       cssTxt = document.getElementById('css-txt');

@@ -1,4 +1,3 @@
-<!ENTITY version "0.1.0.20090119">
 <!ENTITY wiki4x.options.windowtitle "Option">
 <!ENTITY wiki4x.options.ext "Extension">
 <!ENTITY wiki4x.options.path "Home Path">
@@ -10,6 +9,4 @@
 <!ENTITY wiki4x.options.add "Add">
 <!ENTITY wiki4x.options.remove "Remove">
 <!ENTITY wiki4x.options.edit "Edit">
-<!ENTITY wiki4x.options.about.title "Wiki4X">
-<!ENTITY wiki4x.options.about.version "Version &version;">
-
+<!ENTITY wiki4x.options.title "Wiki4X">

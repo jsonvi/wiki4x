@@ -23,8 +23,8 @@
   <vbox>
     <groupbox id="aboutpanel" orient="vertical" >
       <vbox align="center">
-        <caption label="&wiki4x.options.about.title;" />
-        <description value="&wiki4x.options.about.version;"/>
+        <caption label="&wiki4x.options.title;" />
+        <description id="wiki4x-version" />
       </vbox>
       <separator />
     </groupbox>

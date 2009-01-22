@@ -108,6 +108,18 @@ var Options = function(){
 		},				 
     saveInterWiki: function(){
       _pref.setCharPref("wiki4x.option4x.interwiki",_interwiki.toStr());
+    },
+    getVersion: function(){
+      if ("@mozilla.org/extensions/manager;1" in Components.classes) {
+          var Wiki4XID = "wiki4x@freeai.ghc";
+          var em = Components.classes["@mozilla.org/extensions/manager;1"]
+                             .getService(Components.interfaces.nsIExtensionManager);
+          if (!("getItemForID" in em))
+              return;
+          var version = em.getItemForID(Wiki4XID).version;
+          if(version)
+            return version;
+      }
     }
 	};
 }();
