@@ -40,7 +40,7 @@ var View4X = function(){
 		initStyle();
 		var creole = new Parse.Simple.Creole( {
 			interwiki: Options.interWiki().getAll(),
-			linkFormat:['',Options.getExt()]
+			linkFormat:[Options.getPath()+'/',Options.getExt()]
 		} );
 		var div = doc.createElement('div');
 		div.setAttribute('class','wiki-block');
