@@ -9,15 +9,13 @@ var Preloader = function(){
   //public
   return {
     initLink: function(){
-     var links = doc.getElementsByClassName('InnerLink'); 
-     logger.log('innerlinks.length='+links.length);
-     for(var i=0;i<links.length;i++)
+     var arr = doc.getElementsByClassName('InnerLink'); 
+     for(var i=0;i<arr.length;)
      {
-        if(!pageExist(links[i].getAttribute('href')))
-        {
-          logger.log('link '+links[i].getAttribute('href')+' not exist');
-          links[i].setAttribute('class','NonExistInnerLink');
-        }
+        if(!pageExist(arr.item(i).getAttribute('href')))
+          arr[i].setAttribute('class','NonExistInnerLink');
+        else
+          i++;
      }
     }  
   };
