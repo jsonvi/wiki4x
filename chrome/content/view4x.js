@@ -38,9 +38,12 @@ var View4X = function(){
 	var wikify = function(){
 		var src = doc.body.childNodes[0].innerHTML;		
 		initStyle();
+    var homepath = Options.getPath();
+    if(homepath)
+      homepath+='/';
 		var creole = new Parse.Simple.Creole( {
 			interwiki: Options.interWiki().getAll(),
-			linkFormat:[Options.getPath()+'/',Options.getExt()]
+			linkFormat:[homepath,Options.getExt()]
 		} );
 		var div = doc.createElement('div');
 		div.setAttribute('class','wiki-block');
@@ -58,6 +61,8 @@ var View4X = function(){
 			if(!Wiki4X.isValid())
         return;
 			wikify();			 
+      if(!Options.getPath())
+        return;
       var pre = new Preloader();
       pre.initLink();
 		}	
