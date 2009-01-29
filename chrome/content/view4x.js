@@ -55,8 +55,11 @@ var View4X = function(){
 	return {
 		domLoad: function(aEvent){
 			doc = aEvent.originalTarget;
-			if(Wiki4X.isValid())
-				wikify();			 
+			if(!Wiki4X.isValid())
+        return;
+			wikify();			 
+      var pre = new Preloader();
+      pre.initLink();
 		}	
 	};
 }();

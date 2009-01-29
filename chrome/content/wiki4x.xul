@@ -2,6 +2,8 @@
 <overlay id="wiki4x" 
          xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
  <script src="logger.js" />
+ <script src="io.js" />
+ <script src="preloader.js" />
  <script src="wikiparser.js" />
  <script src="view4x.js" />
  <script src="options.js" />
