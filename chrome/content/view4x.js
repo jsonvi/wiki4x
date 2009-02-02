@@ -43,7 +43,7 @@ var View4X = function(){
       homepath+='/';
 		var creole = new Parse.Simple.Creole( {
 			interwiki: Options.interWiki().getAll(),
-			linkFormat:[homepath,Options.getExt()]
+			linkFormat:['',Options.getExt()]
 		} );
 		var div = doc.createElement('div');
 		div.setAttribute('class','wiki-block');
