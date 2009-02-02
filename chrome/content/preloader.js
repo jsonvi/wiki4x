@@ -20,9 +20,7 @@ var Preloader = function(){
     var fileIn = FileIO.open(_file);
     return fileIn.exists();
   };
-  var setNonExist = function(_link){
-    _link.setAttribute('class','non-exist-internal-link'); 
-  };
+  
   var initPath = function(dir){
      var rootlist = new Array();
      if (dir.exists())
@@ -50,7 +48,7 @@ var Preloader = function(){
   return {
     initLink: function(){
      initPath(DirIO.open(Options.getPath()));
-     var arr = doc.getElementsByClassName('InnerLink'); 
+     var arr = doc.getElementsByClassName('internal-link'); 
      for(var i=0;i<arr.length;)
      {
        var page = new Page();
@@ -73,7 +71,7 @@ var Preloader = function(){
        if(page.exist)
          i++;
        else
-         arr.item(i).setAttribute('class','non-exist-inner-link'); 
+         arr.item(i).setAttribute('class','non-exist-internal-link'); 
 
      }
     }  
