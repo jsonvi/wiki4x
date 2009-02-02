@@ -21,7 +21,7 @@ var Preloader = function(){
     return fileIn.exists();
   };
   var setNonExist = function(_link){
-    _link.setAttribute('class','non-exist-inner-link'); 
+    _link.setAttribute('class','non-exist-internal-link'); 
   };
   var initPath = function(dir){
      var rootlist = new Array();
