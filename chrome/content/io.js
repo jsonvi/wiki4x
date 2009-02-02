@@ -281,7 +281,24 @@ if (typeof(JSIO) != 'boolean') {
 			}
 			return list;
 		},
+    getSubFolders  : function(dir) {
+			var dirEntry = dir.directoryEntries;
 
+			var list = new Array();
+			try {
+				while (dirEntry.hasMoreElements()) {
+          var f = dirEntry.getNext().QueryInterface(FileIO.localfileIID);
+          if(f.isDirectory())
+  					list.push(f);
+				}
+				
+			}
+			catch(e) {
+        alert(e);
+			   // foobar!
+			}
+			return list;
+		},
 		unlink : function(dir, recursive) {
 			try {
 				if (recursive == null) {
