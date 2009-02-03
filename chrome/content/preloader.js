@@ -71,7 +71,10 @@ var Preloader = function(){
        if(page.exist)
          i++;
        else
+       {
+         arr.item(i).setAttribute('href',page.file);
          arr.item(i).setAttribute('class','non-exist-internal-link'); 
+       }
 
      }
     }  
