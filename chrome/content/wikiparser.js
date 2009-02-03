@@ -258,6 +258,7 @@ Parse.Simple.Creole = function(options) {
             build: function(node, r, options) {
                 var link = doc.createElement('a');
                 link.href = r[1];
+                link.setAttribute('class','external-link');
                 if (options && options.isPlainUri) {
                     link.appendChild(doc.createTextNode(r[2]));
                 }
@@ -321,7 +322,7 @@ Parse.Simple.Creole = function(options) {
             }
 
             link.href = formatLink(m[2].replace(/~(.)/g, '$1'), f);
-            
+            link.setAttribute('class','inter-wiki-link');
             this.apply(link, r[2], options);
             
             node.appendChild(link);
