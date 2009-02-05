@@ -38,7 +38,7 @@ var Preloader = function(){
     {
        var _file = allpaths[i]+'/'+_page;
        var fileIn = FileIO.open(_file);
-       if(fileIn.exists())
+       if(fileIn.exists() && (!fileIn.isDirectory()))
          return _file;
     }
     return false;
