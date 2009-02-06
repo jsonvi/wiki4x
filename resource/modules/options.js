@@ -91,7 +91,7 @@ var Options = function(){
 	// public
 	return {
     interWiki: function(){return _interwiki;},
-		getExt: function(){return _ext;},	
+		getExt: function(){return _ext.replace(/^([^\.].+)/,'\.$1');},	
 		getPath: function(){return _path;},	
 		getCss: function(){return _css;},
 		setExt: function(_newext){
