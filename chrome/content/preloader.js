@@ -21,52 +21,33 @@ var Preloader = function(){
     return fileIn.exists();
   };
   
-  var initPath = function(dir){
-     var rootlist = new Array();
-     if (dir.exists())
-      rootlist = DirIO.getSubFolders(dir); 
-     if (rootlist.length > 0) {
-        for (var i = 0; i < rootlist.length; i++) {
-          allpaths.push(rootlist[i].path);
-          initPath(rootlist[i]);
-        }
-      }
-     return rootlist;
+  var getCategoryPath = function(_name){
+    return Options.getPath()+'/'+_name;
+    logger.log('get category path from '+_name+' in index file');
+    // get category path from a page in index file
   };
-  var searchInHomePath = function(_page){
-    for(var i=0;i<allpaths.length;i++)
-    {
-       var _file = allpaths[i]+'/'+_page;
-       var fileIn = FileIO.open(_file);
-       if(fileIn.exists() && (!fileIn.isDirectory()))
-         return _file;
-    }
-    return false;
-  };
+
 
   //public
   return {
     initLink: function(){
-     initPath(DirIO.open(Options.getPath()));
      var arr = doc.getElementsByClassName('internal-link'); 
      for(var i=0;i<arr.length;)
      {
        var page = new Page();
        page.name = arr.item(i).getAttribute('href');
-       page.file = Options.getPath()+'/'+page.name; 
        var withpath = page.withPath();
        if(!withpath)
        {
-         var realpath = searchInHomePath(page.name);
+         var realpath = getCategoryPath(page.name);
          if(realpath)
          {
            page.file = realpath;
-           page.exist = true;
            arr.item(i).setAttribute('href',realpath);
          }
        }
-       else
-         page.exist = pageExist(page.file);
+       logger.log('page.file = '+page.file);
+       page.exist = pageExist(page.file);
 
        if(page.exist)
          i++;
