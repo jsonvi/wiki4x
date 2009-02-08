@@ -14,8 +14,6 @@ var Preloader = function(){
       }
     };
   };
-  var allpaths = new Array();
-  allpaths[0] = Options.getPath();
   var pageExist = function(_file){
     var fileIn = FileIO.open(_file);
     return fileIn.exists();
