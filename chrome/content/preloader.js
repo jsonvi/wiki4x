@@ -19,10 +19,8 @@ var Preloader = function(){
     return fileIn.exists();
   };
   
-  var getCategoryPath = function(_name){
+  var getPath = function(_name){
     return Options.getPath()+'/'+_name;
-    logger.log('get category path from '+_name+' in index file');
-    // get category path from a page in index file
   };
 
 
@@ -34,17 +32,12 @@ var Preloader = function(){
      {
        var page = new Page();
        page.name = arr.item(i).getAttribute('href');
-       var withpath = page.withPath();
-       if(!withpath)
+       var path = getPath(page.name);
+       if(path)
        {
-         var realpath = getCategoryPath(page.name);
-         if(realpath)
-         {
-           page.file = realpath;
-           arr.item(i).setAttribute('href',realpath);
-         }
+         page.file = path;
+         arr.item(i).setAttribute('href',path);
        }
-       logger.log('page.file = '+page.file);
        page.exist = pageExist(page.file);
 
        if(page.exist)
